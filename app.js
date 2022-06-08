@@ -5,6 +5,7 @@ const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
+const path = require('path');
 
 // mongoose.connect('mongodb+srv://pratshash:pratshash@cluster0.jjquq.mongodb.net/?retryWrites=true&w=majority')
 
@@ -32,8 +33,10 @@ app.use((req, res, next) =>{
   next();
 })
 
+app.use('/css', express.static(path.resolve(__dirname, "views")))
 
-app.use('/users', require('./routes/index'));
+
+app.use('/', require('./routes/index'));
 
 
-app.listen(3000, console.log("Server started on port 3000..."));
+app.listen(3000, ()=> console.log("Server started on port 3000..."));
