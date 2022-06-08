@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
 const path = require('path');
-const users = require('./models/usersDOA')
+const usersDOA = require('./models/usersDOA')
 
 
 // EJS
