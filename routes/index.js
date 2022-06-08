@@ -20,7 +20,7 @@ router.post('/add_user', (req, res)=>{
         Status: status
     }).then(user =>{
         newUser.save().then(user =>{
-            req.flash("success_msg", "User added successfully!!");
+            req.flash("success_msg", "USER ADDED SUCCESSFULLY!!");
         })
         .catch(err =>{
             console.log(err);
