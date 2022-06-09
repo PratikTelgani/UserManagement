@@ -8,6 +8,11 @@ const session = require('express-session');
 const path = require('path');
 const usersDOA = require('./models/usersDOA')
 
+mongoose.connect('mongodb://localhost/Users');
+let db = mongoose.connection;
+db.on('open', ()=>{
+  console.log("Connected to MongoDB...");
+})
 
 // EJS
 app.use(expressLayouts);
@@ -38,16 +43,18 @@ app.use('/css', express.static(path.resolve(__dirname, "views")))
 app.use('/', require('./routes/index'));
 
 
-mongoose.connect('mongodb+srv://pratshash:pratshash@cluster0.jjquq.mongodb.net/?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    family: 4
-}).then(async client=>{
-    usersDOA.injectdb(client);
-    app.listen(8000, ()=> console.log("Server started on port 8000..."));
+// mongoose.connect('mongodb+srv://pratshash:pratshash@cluster0.jjquq.mongodb.net/?retryWrites=true&w=majority', {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     family: 4
+// }).then(async client=>{
+//     usersDOA.injectdb(client);
+//     app.listen(8000, ()=> console.log("Server started on port 8000..."));
 
-})
-.catch(err => {
-    console.log(err)
-})
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+app.listen(3000, console.log('Server started on port 3000...'))
 
