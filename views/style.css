@@ -66,7 +66,7 @@ a {
 }
 
 #header nav{
-    background-color: #06d6a0;
+    background-color: #737b79;
     padding: 1em 0;
     width: 100%;
 }
@@ -104,7 +104,7 @@ table{
 }
 
 .table tr:hover{
-    background-color:#06d6a0 ;
+    background-color:#5a6c68 ;
 }
 
 .table tr:hover td > a{

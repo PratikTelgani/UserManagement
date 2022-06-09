@@ -29,6 +29,22 @@ router.get('/update_user/:id', (req,res)=>{
     })
 })
 
+router.post('/update_user/:id', (req,res)=>{
+    let {name, email, gender, status} = req.body
+    User.updateOne({
+        Name: name,
+        Email: email,
+        Gender: gender,
+        Status: status
+    }, (err, user)=>{
+        if(err){console.log(err)}
+        else{
+            req.flash("success_msg", "User updated Successfully!!");
+            res.redirect('/')
+        }
+    })
+})
+
 router.post('/add_user', (req, res)=>{
     let {name, email, gender, status} = req.body;
     const newUser = User({
